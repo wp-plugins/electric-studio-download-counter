@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: irvingswiftj, Matthew Burrows
-Tags: comments, spam
+Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 3.1.4
 Stable tag: 0.5
