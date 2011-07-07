@@ -22,18 +22,18 @@ register_deactivation_hook( __FILE__, 'electric_studio_download_counter_remove' 
 
 function esdc_init(){
 	if(is_admin()){
-		wp_register_style( 'esdc-style', get_bloginfo('wpurl').'/wp-content/plugins/electric_studio_download_counter/css/esdc_style.css');
+		wp_register_style( 'esdc-style', get_bloginfo('wpurl').'/wp-content/plugins/electric-studio-download-counter/css/esdc_style.css');
 		wp_enqueue_style('esdc-style');
-		wp_register_style( 'esdc-datepicker-style', get_bloginfo('wpurl').'/wp-content/plugins/electric_studio_download_counter/css/smoothness/jquery-ui-1.8.14.custom.css');
+		wp_register_style( 'esdc-datepicker-style', get_bloginfo('wpurl').'/wp-content/plugins/electric-studio-download-counter/css/smoothness/jquery-ui-1.8.14.custom.css');
 		wp_enqueue_style('esdc-datepicker-style');
-		wp_register_script('esdc_datepicker_script_js',get_bloginfo('wpurl').'/wp-content/plugins/electric_studio_download_counter/js/jquery-ui-1.8.14.custom.min.js',array('jquery'));
+		wp_register_script('esdc_datepicker_script_js',get_bloginfo('wpurl').'/wp-content/plugins/electric-studio-download-counter/js/jquery-ui-1.8.14.custom.min.js',array('jquery'));
 		wp_enqueue_script('esdc_datepicker_script_js');
-		wp_register_script('esdc_option_navigation_js',get_bloginfo('wpurl').'/wp-content/plugins/electric_studio_download_counter/js/electric_studio_option_navigation.js',array('jquery'));
+		wp_register_script('esdc_option_navigation_js',get_bloginfo('wpurl').'/wp-content/plugins/electric-studio-download-counter/js/electric_studio_option_navigation.js',array('jquery'));
 		wp_enqueue_script('esdc_option_navigation_js');
 	}
 	$esdcCount_nonce = wp_create_nonce('esdcCount');
 	$esdcDateSearch_nonce = wp_create_nonce('esdcDateSearch');
-	wp_register_script('esdc_main_js',get_bloginfo('wpurl').'/wp-content/plugins/electric_studio_download_counter/js/electric_studio_download_counter.js',array('jquery'));
+	wp_register_script('esdc_main_js',get_bloginfo('wpurl').'/wp-content/plugins/electric-studio-download-counter/js/electric_studio_download_counter.js',array('jquery'));
 	wp_enqueue_script('esdc_main_js');
 }
 
