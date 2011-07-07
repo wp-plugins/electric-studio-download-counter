@@ -12,6 +12,7 @@ function esdc_links(){ ?>
 		<li><a href="#" class="esdc-lastweek">Last 7 Days</a></li>
 		<li><a href="#" class="esdc-lastmonth">Last 30 Days</a></li>
 		<li><a href="#" class="esdc-topten">Top Ten</a></li>
+		<li><a href="#" class="esdc-search">Search Dates</a></li>
 		<li><a href="#" class="esdc-options">Plugin Options</a></li>
 	</ul>
 <?php }
@@ -74,6 +75,20 @@ function esdc_options_page() {
     	<?php
     	esdc_populate_stats('','','',10);
     	?>
+    </div>
+    <div class="esdc-search esdc-container">
+    	<form method="POST" action="" id="esdc-search-form">
+    		<label for="escd_from_date">From (YYYY-MM-DD): </label>
+    		<input type="text" name="escd_from_date" id="escd_from_date" />
+    		<label for="escd_to_date">To (YYYY-MM-DD): </label>
+    		<input type="text" name="escd_to_date" id="escd_to_date" />
+    		<input type="submit" value="submit" class="button" />
+			<br class="clear" />
+    	</form>
+    	<div id="esdc-search-results-loading" style="display:none">Loading...</div>
+    	<div id="esdc-search-results">
+    		<?php esdc_populate_stats('','','',10); ?>
+    	</div>
     </div>
 	<div class="esdc-options esdc-container"><?php esdc_options(); ?></div>
 	

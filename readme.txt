@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: irvingswiftj, Matthew Burrows
-Tags: downloads, counter
+Tags: comments, spam
 Requires at least: 3.1
-Tested up to: 3.1.4
-Stable tag: 0.5
+Tested up to: 3.2
+Stable tag: 0.7
 
 Get Statistics about your downloads.
 
@@ -34,13 +34,20 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 
 == Changelog ==
 
+= 0.7 =
+
+* 2 Bug Fixes
+* Search for Dates
+
 = 0.5 =
-* 1st release.
+* Beta version release.
 
 == Upgrade Notice ==
 
+= 1.0 =
+Bug fixes and new functionality
 
 = 0.5 =
-This is the 1st version.
+This is the beta version.
 
 

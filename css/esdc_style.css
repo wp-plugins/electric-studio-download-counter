@@ -30,9 +30,9 @@ div.esdc-container {
 	clear: both;
 	margin: 25px 0px;
 }
-div.esdc-container table {
+div.esdc-container table, form#esdc-search-form {
 	display: block; clear: both;
-	padding: 10px; margin: 0px 10px;
+	padding: 10px; margin: 0px 10px 10px 10px;
 	border: 1px solid #E3E3E3;
 	border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px; -o-border-radius: 6px;
 	background: #FFF;
@@ -59,4 +59,15 @@ div.esdc-container table tbody tr.even td {
 }
 div.esdc-container table tbody tr td.esdc-result-count {
 	text-align: center;
+}
+form#esdc-search-form label {
+	float: left; display: inline;
+	margin: 0px 10px 0px 0px; padding: 5px 0px;
+	font-weight: bold;
+}
+form#esdc-search-form input {
+	float: left; display: inline;
+	margin: 0px 10px 0px 0px; padding: 5px;
+	border: 1px solid #DFDFDF;
+	border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px;
 }

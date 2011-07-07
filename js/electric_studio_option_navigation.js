@@ -11,4 +11,7 @@ jQuery(document).ready(function($){
 		}
 		return false;
 	});
+	$("input[name=escd_from_date], input[name=escd_to_date]").datepicker({
+		dateFormat: 'yy-mm-dd'
+	});
 });

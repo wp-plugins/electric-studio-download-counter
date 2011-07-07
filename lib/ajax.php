@@ -2,11 +2,13 @@
 
 add_action('wp_print_footer_scripts','esdc_print_js_string');
 add_action('wp_print_footer_scripts','esdc_print_ajax_js');
+add_action('wp_print_footer_scripts','esdc_print_ajax_date_search_js');
 
 if( is_admin() ){
 	//add ajax hooks if logged in as admin
 	add_action('wp_ajax_nopriv_esdcCount','esdc_count');
 	add_action('wp_ajax_esdcCount','esdc_count');
+	add_action('wp_ajax_esdcDateSearch','esdc_date_search');
 }else{
 	//add ajax hooks if not logged in as admin (ajax is not enabled on frontend wordpress by default)
 	add_action('wp_ajax_nopriv_esdcCount','esdc_count');
@@ -45,7 +47,7 @@ function esdc_print_ajax_js(){ ?>
 		        type: "post",
 		        url: "<?php echo get_admin_url(); ?>/admin-ajax.php",
 		        data: {
-		                action: 'esdcCount',
+		                action: 'esdcDateSearch',
 		                file: filename,
 		                _ajax_nonce: '<?php echo $esdcCount_nonce; ?>'
 		        },
@@ -56,7 +58,6 @@ function esdc_print_ajax_js(){ ?>
 		                //$('input[name=searchparam]').removeClass('loading');
 		        },
 		        success: function (html) { //so, if data is retrieved, store it in html
-		                console.log(html);
 		                window.location = url;
 		        },
 		        error: function(){
@@ -66,4 +67,41 @@ function esdc_print_ajax_js(){ ?>
 	    	});
 		}
 	</script>
-<?php } ?>
+<?php } 
+
+function esdc_print_ajax_date_search_js(){ ?>
+	<script type="text/javascript">
+		function esdc_search_dates(from,to){
+		    jQuery.ajax({
+		        type: "post",
+		        url: "<?php echo get_admin_url(); ?>/admin-ajax.php",
+		        data: {
+		                action: 'esdcDateSearch',
+		                fromdate: from,
+		                todate: to,
+		                _ajax_nonce: '<?php echo $esdcDateSearch_nonce; ?>'
+		        },
+		        beforeSend: function () {
+		        		jQuery('div#esdc-search-results-loading').show();
+		        },
+		        complete: function () {
+		        		jQuery('div#esdc-search-results-loading').hide();
+		        },
+		        success: function (html) { //so, if data is retrieved, store it in html
+		                jQuery('div#esdc-search-results').html(html);
+		        },
+		        error: function(){
+		            alert('There has been an error, Please try again');
+		            return false;
+		        }
+	    	});
+		}
+	</script>
+<?php } 
+
+function esdc_date_search(){
+	esdc_populate_stats($_POST['fromdate'],$_POST['todate'],'',30);
+	die;
+}
+
+?>

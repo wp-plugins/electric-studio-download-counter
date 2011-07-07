@@ -11,8 +11,13 @@ jQuery(function($){
 			return false;
 		}
 	});
-
 	
+	$('form#esdc-search-form input[type=submit]').click(function(){
+		var from = $('form#esdc-search-form input[name=escd_from_date]').val(),
+			to = $('form#esdc-search-form input[name=escd_to_date]').val();
+		esdc_search_dates(from,to);
+		return false;
+	});
 	
 });
 
