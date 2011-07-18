@@ -3,7 +3,7 @@ Contributors: irvingswiftj, Matthew Burrows
 Tags: comments, spam
 Requires at least: 3.1
 Tested up to: 3.2
-Stable tag: 0.7
+Stable tag: 0.7.1
 
 Get Statistics about your downloads.
 
@@ -28,11 +28,14 @@ Else, to install manually:
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1.png` (or jpg, jpeg, gif)
-2. This is the second screen shot
+1. An example of the available download stats.
+2. Specify which file types you want to track.
 
 == Changelog ==
+
+= 0.7.1 =
+
+* Fixed 'not counting bug'
 
 = 0.7 =
 
@@ -44,7 +47,10 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 
 == Upgrade Notice ==
 
-= 1.0 =
+= 0.7.1 =
+Fixes issues with not counting.
+
+= 0.7 =
 Bug fixes and new functionality
 
 = 0.5 =

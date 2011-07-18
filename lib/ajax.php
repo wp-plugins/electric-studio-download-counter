@@ -45,9 +45,9 @@ function esdc_print_ajax_js(){ ?>
 		function esdc_count_download(filename,url){
 		    jQuery.ajax({
 		        type: "post",
-		        url: "<?php echo get_admin_url(); ?>/admin-ajax.php",
+		        url: "<?php echo get_admin_url(); ?>admin-ajax.php",
 		        data: {
-		                action: 'esdcDateSearch',
+		                action: 'esdcCount',
 		                file: filename,
 		                _ajax_nonce: '<?php echo $esdcCount_nonce; ?>'
 		        },
@@ -74,7 +74,7 @@ function esdc_print_ajax_date_search_js(){ ?>
 		function esdc_search_dates(from,to){
 		    jQuery.ajax({
 		        type: "post",
-		        url: "<?php echo get_admin_url(); ?>/admin-ajax.php",
+		        url: "<?php echo get_admin_url(); ?>admin-ajax.php",
 		        data: {
 		                action: 'esdcDateSearch',
 		                fromdate: from,
