@@ -92,7 +92,7 @@ function esdc_options_page() {
     </div>
 	<div class="esdc-options esdc-container"><?php esdc_options(); ?></div>
 	
-    <p>Plugin Created By <a href="http://www.electricstudio.co.uk/2011/05/wordpress-auto-post-expire-plugin/">Electric Studio</a></p>
+    <p>Plugin Created By <a href="http://www.electricstudio.co.uk/2011/07/wordpress-download-counter-plugin/">Electric Studio</a></p>
   </div>
 <?php
 }

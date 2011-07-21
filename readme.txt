@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: irvingswiftj, Matthew Burrows
+Contributors: irvingswiftj, Matthew Burrows, Electric Studio
 Tags: comments, spam
 Requires at least: 3.1
 Tested up to: 3.2
