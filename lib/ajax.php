@@ -100,7 +100,7 @@ function esdc_print_ajax_date_search_js(){ ?>
 <?php } 
 
 function esdc_date_search(){
-	esdc_populate_stats($_POST['fromdate'],$_POST['todate'],'',30);
+	esdc_populate_stats($_POST['fromdate'],$_POST['todate']);
 	die;
 }
 
