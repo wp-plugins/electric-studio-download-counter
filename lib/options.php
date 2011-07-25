@@ -92,7 +92,7 @@ function esdc_options_page() {
     </div>
 	<div class="esdc-options esdc-container"><?php esdc_options(); ?></div>
 	
-    <p>Plugin Created By <a href="http://www.electricstudio.co.uk/2011/07/wordpress-download-counter-plugin/">Electric Studio</a></p>
+    <p>Plugin Created By <a href="http://www.electricstudio.co.uk/2011/07/wordpress-download-counter-plugin/">Electric Studio</a> | Get Hosting from <a href="http://www.electrichosting.co.uk">Electric Hosting</a></p>
   </div>
 <?php
 }
