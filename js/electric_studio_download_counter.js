@@ -1,4 +1,4 @@
-jQuery(function($){
+(function($){
 
 	$(esdcFileType).bind('click',function(){
 		
@@ -19,5 +19,5 @@ jQuery(function($){
 		return false;
 	});
 	
-});
+})(jQuery);
 

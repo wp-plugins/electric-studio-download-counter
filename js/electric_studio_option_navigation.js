@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+(function($){
 	$("ul#esdc-navigation li a:first").addClass("active");
 	$("div.esdc-container:not(:first)").hide();
 	$("ul#esdc-navigation li a").click(function(){
@@ -14,4 +14,4 @@ jQuery(document).ready(function($){
 	$("input[name=escd_from_date], input[name=escd_to_date]").datepicker({
 		dateFormat: 'yy-mm-dd'
 	});
-});
+})(jQuery);
