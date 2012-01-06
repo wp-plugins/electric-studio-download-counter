@@ -1,16 +1,17 @@
 <?php 
 
-add_action('wp_print_footer_scripts','esdc_print_js_string');
-add_action('wp_print_footer_scripts','esdc_print_ajax_js');
-add_action('wp_print_footer_scripts','esdc_print_ajax_date_search_js');
-
 if( is_admin() ){
 	//add ajax hooks if logged in as admin
+	add_action('admin_print_footer_scripts','esdc_print_js_string');
+	add_action('admin_print_footer_scripts','esdc_print_ajax_js');
+	add_action('admin_print_footer_scripts','esdc_print_ajax_date_search_js');		
 	add_action('wp_ajax_nopriv_esdcCount','esdc_count');
 	add_action('wp_ajax_esdcCount','esdc_count');
 	add_action('wp_ajax_esdcDateSearch','esdc_date_search');
 }else{
 	//add ajax hooks if not logged in as admin (ajax is not enabled on frontend wordpress by default)
+	add_action('wp_print_scripts','esdc_print_js_string');
+	add_action('wp_print_scripts','esdc_print_ajax_js');	
 	add_action('wp_ajax_nopriv_esdcCount','esdc_count');
 }
 

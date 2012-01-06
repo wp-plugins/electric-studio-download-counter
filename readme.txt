@@ -2,8 +2,8 @@
 Contributors: irvingswiftj, Matthew Burrows, Electric Studio
 Tags: downloads, counter
 Requires at least: 3.1
-Tested up to: 3.2
-Stable tag: 0.7.2
+Tested up to: 3.3.1
+Stable tag: 0.7.3
 
 Get Statistics about your downloads.
 
@@ -33,6 +33,9 @@ Else, to install manually:
 
 == Changelog ==
 
+= 0.7.3 =
+* Wordpress 3.3.1 compatible
+
 = 0.7.2 =
 * Searching for downloads between different dates are no longer limited to 30 results.
 
@@ -49,6 +52,9 @@ Else, to install manually:
 * Beta version release.
 
 == Upgrade Notice ==
+
+= 0.7.3 =
+Wordpress 3.3.1 compatible
 
 = 0.7.2 =
 Download search improved
