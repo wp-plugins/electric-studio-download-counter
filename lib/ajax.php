@@ -2,7 +2,7 @@
 
 if( is_admin() ){
 	//add ajax hooks if logged in as admin
-	add_action('admin_print_footer_scripts','esdc_print_js_string');
+	add_action('wp_print_scripts','esdc_print_js_string');
 	add_action('admin_print_footer_scripts','esdc_print_ajax_js');
 	add_action('admin_print_footer_scripts','esdc_print_ajax_date_search_js');		
 	add_action('wp_ajax_nopriv_esdcCount','esdc_count');
@@ -18,7 +18,7 @@ if( is_admin() ){
 
 function esdc_count(){
 	$data = esdc_add_to_count($_POST['file']);
-	print_r(esdc_get_count($_POST['file']));
+	//print_r(esdc_get_count($_POST['file']));
 	die;
 }
 
@@ -35,7 +35,7 @@ function esdc_print_js_string(){ ?>
 			}
 			$i++;
 		}
-		$jsFileTypeString .= "\"\n";
+		$jsFileTypeString .= "\"";
 		echo $jsFileTypeString.";";
 		?>
 	</script>

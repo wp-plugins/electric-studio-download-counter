@@ -3,7 +3,7 @@ Contributors: irvingswiftj, Matthew Burrows, Electric Studio
 Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 3.3.1
-Stable tag: 0.7.3
+Stable tag: 0.7.4
 
 Get Statistics about your downloads.
 
@@ -33,6 +33,9 @@ Else, to install manually:
 
 == Changelog ==
 
+= 0.7.4 =
+* Fixed Jquery bug
+
 = 0.7.3 =
 * Wordpress 3.3.1 compatible
 
@@ -52,6 +55,9 @@ Else, to install manually:
 * Beta version release.
 
 == Upgrade Notice ==
+
+= 0.7.4 =
+Fixed jquery bug 
 
 = 0.7.3 =
 Wordpress 3.3.1 compatible
