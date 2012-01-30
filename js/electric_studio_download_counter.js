@@ -1,7 +1,6 @@
-(function($){
+jQuery(document).ready(function($) {
 
 	$(esdcFileType).bind('click',function(){
-		
 		var link_path = $(this).attr('href');
 		var url = link_path;
 		link_path = link_path.split('/');
@@ -19,5 +18,5 @@
 		return false;
 	});
 	
-})(jQuery);
+});
 

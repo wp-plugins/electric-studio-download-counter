@@ -3,7 +3,7 @@
 Plugin Name: Electric Studio Download Counter
 Plugin URI: http://www.electricstudio.co.uk
 Description: Get Statistics on your Downloads
-Version: 0.7.3
+Version: 0.7.4
 Author: James Irving-Swift
 Author URI: http://www.irving-swift.com
 License: GPL2
@@ -20,6 +20,15 @@ register_activation_hook(__FILE__,'electric_studio_download_counter_install');
 /* Runs on plugin deactivation*/
 register_deactivation_hook( __FILE__, 'electric_studio_download_counter_remove' );
 
+
+//check is jquery is loaded, and if not, load it
+if( !wp_script_is('jquery')){
+    wp_enqueue_script('jquery','https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
+}
+//check if jquery ui has been loaded and if not, load it
+if( !wp_script_is('jquery-ui') ) { 
+    wp_enqueue_script( 'jquery-ui' , 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js' );
+}  
 function esdc_init(){
 	if(is_admin()){
 		wp_register_style( 'esdc-style', get_bloginfo('wpurl').'/wp-content/plugins/electric-studio-download-counter/css/esdc_style.css');
