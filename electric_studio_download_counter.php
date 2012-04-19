@@ -84,6 +84,4 @@ class Esdc extends Esdc_db{
 
 include 'lib/ajax.php';
 
-//$count_nonce = wp_create_nonce('esdcCount');
-//$dateSearch_nonce = wp_create_nonce('esdcDateSearch');
 $esdc = new Esdc();
