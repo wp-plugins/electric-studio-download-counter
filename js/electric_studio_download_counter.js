@@ -2,11 +2,15 @@ jQuery(document).ready(function($) {
 
 	$(esdcFileType).bind('click',function(){
 		var link_path = $(this).attr('href');
+		var target = $(this).attr('target');
+		if(target){ //this if statement to to check that target is not underfined else toLowerCase() would crash the script.
+			target = target.toLowerCase();
+		}
 		var url = link_path;
 		link_path = link_path.split('/');
 		filename = link_path[link_path.length-1];
 		if(filename !== ""){
-			esdc_count_download(filename,url);
+			esdc_count_download(filename,url,target);
 			return false;
 		}
 	});
@@ -19,4 +23,3 @@ jQuery(document).ready(function($) {
 	});
 	
 });
-

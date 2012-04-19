@@ -3,7 +3,7 @@ Contributors: irvingswiftj, Matthew Burrows, Electric Studio
 Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 3.3.1
-Stable tag: 0.7.4
+Stable tag: 1.0
 
 Get Statistics about your downloads.
 
@@ -13,9 +13,10 @@ View how many people have downloaded what files from your site.
 
 Features include:
 * Allows you to specify which file types to track.
-* View top ten downloads
-* View this month's downloads
-* View this week's downloads
+* View top ten downloads.
+* View this month's downloads.
+* View this week's downloads.
+* Use shortcode or a php function to display amount of times downloaded in the frontend of your site.
 
 == Installation ==
 
@@ -32,6 +33,13 @@ Else, to install manually:
 2. Specify which file types you want to track.
 
 == Changelog ==
+
+= 1.0 =
+* Code is now Object Orientated style to be consistant with our other plugins
+* Nonces have been added for security on the AJAX functions
+* Javascript now respects target="_blank" on tracked links - Thanks to Philouxera for bringing this to my attention
+* Download Counter is now a menu page rather than an option page.
+* Count Shortcode added [downloadcount link="filename.txt"]. Users that want to build this into their template can do with `echo $esdc->get_count("filename.txt");` - Thanks to 'Biyan' for suggesting this
 
 = 0.7.4 =
 * Fixed Jquery bug
@@ -55,6 +63,13 @@ Else, to install manually:
 * Beta version release.
 
 == Upgrade Notice ==
+
+= 1.0 =
+* Code is now Object Orientated style to be consistant with our other plugins
+* Nonces have been added for security on the AJAX functions
+* Javascript now respects target="_blank" on tracked links
+* Download Counter is now a menu page rather than an option page.
+* Shortcode added
 
 = 0.7.4 =
 Fixed jquery bug 
