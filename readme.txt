@@ -3,7 +3,7 @@ Contributors: irvingswiftj, Matthew Burrows, Electric Studio
 Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 3.3.1
-Stable tag: 1.0
+Stable tag: 1.1
 
 Get Statistics about your downloads.
 
@@ -34,6 +34,10 @@ Else, to install manually:
 
 == Changelog ==
 
+= 1.1 =
+* Fixed notices that appeared in debugging mode
+* Widget now included
+
 = 1.0 =
 * Code is now Object Orientated style to be consistant with our other plugins
 * Nonces have been added for security on the AJAX functions
@@ -63,6 +67,9 @@ Else, to install manually:
 * Beta version release.
 
 == Upgrade Notice ==
+
+= 1.1 =
+* Minor Bug fixes
 
 = 1.0 =
 * Code is now Object Orientated style to be consistant with our other plugins
