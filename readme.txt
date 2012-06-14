@@ -2,7 +2,7 @@
 Contributors: irvingswiftj, Matthew Burrows, Electric Studio
 Tags: downloads, counter
 Requires at least: 3.1
-Tested up to: 3.3.1
+Tested up to: 3.4
 Stable tag: 1.1
 
 Get Statistics about your downloads.
