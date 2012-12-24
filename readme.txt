@@ -1,9 +1,9 @@
 === Plugin Name ===
-Contributors: irvingswiftj, Matthew Burrows, Electric Studio
+Contributors: irvingswiftj, Matthew Burrows, Electric Studio, caekcraft
 Tags: downloads, counter
 Requires at least: 3.1
-Tested up to: 3.4
-Stable tag: 1.1
+Tested up to: 3.5
+Stable tag: 2.0
 
 Get Statistics about your downloads.
 
@@ -24,7 +24,7 @@ Install from wordpress plugins directory.
 
 Else, to install manually:
 
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+1. Upload the whole folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Screenshots ==
@@ -33,6 +33,12 @@ Else, to install manually:
 2. Specify which file types you want to track.
 
 == Changelog ==
+
+= 2.0 =
+* Complete rewrite of the plugin to sort out best practices and conform to WordPress coding standards
+* resolved issues of "not working". It does now.
+* uses the same data, so update should be painless, but please, PLEASE, make a backup of your data
+* to make a backup of your data, look at a plugin named 'WP-DB-Backup' (yes, I know it hasn't been updated in 2 years, but it works perfectly.)
 
 = 1.1 =
 * Fixed notices that appeared in debugging mode
@@ -79,7 +85,7 @@ Else, to install manually:
 * Shortcode added
 
 = 0.7.4 =
-Fixed jquery bug 
+Fixed jquery bug
 
 = 0.7.3 =
 Wordpress 3.3.1 compatible

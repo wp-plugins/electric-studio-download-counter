@@ -31,17 +31,12 @@ class Esdc extends Esdc_db{
      * Includes all the adding of scripts and stylesheets. Also Declares the nonces for AJAX.
      */
     function __construct(){
-
         add_action('init',array(&$this, 'jQueryLoad'));
-
     	if(is_admin()){
     		add_action('init', array(&$this, 'adminScripts'));
     	}
-
     	add_action('init', array(&$this, 'scripts'));
-
     	add_action('init',array(&$this,'nonces'));
-
     	add_shortcode( 'downloadcount', array(&$this,'downloadCountSc'));
 
     }
