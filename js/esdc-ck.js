@@ -2,7 +2,7 @@ jQuery(document).ready(function(e) {
     function f() {
         var e = [];
         for (var t in u) e[t] = 'a[href$=".' + u[t] + '"]';
-        a = "'" + e.join(",") + "'";
+        a = e.join(",");
     }
     function l(t) {
         e.ajax({

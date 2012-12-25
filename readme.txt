@@ -3,7 +3,7 @@ Contributors: irvingswiftj, Matthew Burrows, Electric Studio, caekcraft
 Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 3.5
-Stable tag: 2.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 
 Get Statistics about your downloads.
@@ -35,6 +35,8 @@ Else, to install manually:
 2. Specify which file types you want to track.
 
 == Changelog ==
+= 2.0.1 =
+* Minor bugfix due so it works on 3.5
 
 = 2.0 =
 * Complete rewrite of the plugin to sort out best practices and conform to WordPress coding standards

@@ -14,7 +14,7 @@ jQuery( document ).ready( function( $ ) {
         for( var tr in tracked ) {
             _ts[tr] = 'a[href$=".' + tracked[tr] + '"]';
         }
-        selector = '\'' + _ts.join(',') + '\'';
+        selector = _ts.join(',');
     }
     $(selector).click( function( e ) {
         e.preventDefault();
