@@ -4,6 +4,7 @@ Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 3.5
 Stable tag: 2.0
+License: GPLv2 or later
 
 Get Statistics about your downloads.
 
@@ -12,11 +13,12 @@ Get Statistics about your downloads.
 View how many people have downloaded what files from your site.
 
 Features include:
-* Allows you to specify which file types to track.
-* View top ten downloads.
-* View this month's downloads.
-* View this week's downloads.
-* Use shortcode or a php function to display amount of times downloaded in the frontend of your site.
+
+*   Allows you to specify which file types to track.
+*   View top ten downloads.
+*   View this month's downloads.
+*   View this week's downloads.
+*   Use shortcode or a php function to display amount of times downloaded in the frontend of your site.
 
 == Installation ==
 
