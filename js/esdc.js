@@ -15,8 +15,10 @@ jQuery( document ).ready( function( $ ) {
             _ts[tr] = 'a[href$=".' + tracked[tr] + '"]';
         }
         selector = _ts.join(',');
+
     }
     $(selector).click( function( e ) {
+
         e.preventDefault();
         var pn_splode = $(this)[0].pathname.split( '/' );
         var fn = pn_splode[ pn_splode.length-1 ];
@@ -26,12 +28,7 @@ jQuery( document ).ready( function( $ ) {
             filename: fn,
             cnonce: ESDC_JS.count_nonce
         };
-        ajax( payload );
-        if( e.target.target === "_blank" ) {
-            window.open( e.target.href );
-        } else if ( e.target.target === "" ) {
-            window.location = e.target.href;
-        }
+        ajax( payload, e );
     });
     _f.datepicker({
         dateFormat: 'yy-mm-dd',
@@ -44,7 +41,6 @@ jQuery( document ).ready( function( $ ) {
     _t.datepicker({
         dateFormat: 'yy-mm-dd'
     });
-
     tabs.click( function() {
         var id = '.' + $(this).attr( 'id' );
         tabbed.find( '.esdc-container' ).removeClass( 'active' );
@@ -63,14 +59,24 @@ jQuery( document ).ready( function( $ ) {
             };
         ajax( payload );
     });
-    function ajax( payload ) {
-        $.ajax({
+    function ajax( payload, f ) {
+
+        var derp = $.ajax({
             url: ESDC_JS.ajax_url,
             data: payload,
             success: function( e ) {
                 if( payload.action === 'esdc_search_dates' ) {
                     $( '#esdc-search-results' ).html( e );
                 } else if( payload.action === 'esdc_addtocount' ) {
+                    var _parsed = $.parseJSON( e );
+
+                    if( _parsed.id ) {
+                        if( f.target.target === "_blank" ) {
+                            window.open( f.target.href );
+                        } else if ( f.target.target === "" ) {
+                            window.location = f.target.href;
+                        }
+                    }
                 }
             }
         });
