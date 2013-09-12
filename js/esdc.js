@@ -7,7 +7,7 @@ jQuery( document ).ready( function( $ ) {
         srch = sfield.find( '#esdc-search' ),
         tracked = $.parseJSON( ESDC_JS.tracked ),
         selector = '';
-
+console.log(tracked);
     ts();
     function ts() {
         var _ts = [];
@@ -15,20 +15,17 @@ jQuery( document ).ready( function( $ ) {
             _ts[tr] = 'a[href$=".' + tracked[tr] + '"]';
         }
         selector = _ts.join(',');
-
     }
     $(selector).click( function( e ) {
-
         e.preventDefault();
         var pn_splode = $(this)[0].pathname.split( '/' );
         var fn = pn_splode[ pn_splode.length-1 ];
-
         payload = {
             action: 'esdc_addtocount',
             filename: fn,
             cnonce: ESDC_JS.count_nonce
         };
-        ajax( payload, e );
+        ajax( payload, this );
     });
     _f.datepicker({
         dateFormat: 'yy-mm-dd',
@@ -60,23 +57,14 @@ jQuery( document ).ready( function( $ ) {
         ajax( payload );
     });
     function ajax( payload, f ) {
-
-        var derp = $.ajax({
+        $.ajax({
             url: ESDC_JS.ajax_url,
             data: payload,
             success: function( e ) {
                 if( payload.action === 'esdc_search_dates' ) {
                     $( '#esdc-search-results' ).html( e );
                 } else if( payload.action === 'esdc_addtocount' ) {
-                    var _parsed = $.parseJSON( e );
-
-                    if( _parsed.id ) {
-                        if( f.target.target === "_blank" ) {
-                            window.open( f.target.href );
-                        } else if ( f.target.target === "" ) {
-                            window.location = f.target.href;
-                        }
-                    }
+                    window.location = f;
                 }
             }
         });

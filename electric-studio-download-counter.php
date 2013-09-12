@@ -101,9 +101,14 @@ class ESDC_Options {
      */
     function __construct() {
         add_action('admin_menu', array(&$this,'create_options_page'));
+
         add_action('admin_init', array(&$this,'register_and_build_options'));
+
         add_action('wp_ajax_esdc_search_dates', array( $this, 'date_search' ) );
+        add_action('wp_ajax_nopriv_esdc_search_dates', array( $this, 'date_search' ) );
+
         add_action('wp_ajax_esdc_addtocount', array( $this, 'count' ) );
+        add_action('wp_ajax_nopriv_esdc_addtocount', array( $this, 'count' ) );
     }
     /**
      * Add the options page to the left menu
@@ -138,7 +143,8 @@ class ESDC_Options {
             $option[ $i ] = trim( $op );
         }
         $derp = implode( ',', $option );
-        return $option;
+
+        return $derp;
     }
 
     /**
@@ -152,7 +158,7 @@ class ESDC_Options {
      * @return html the html on the option page
      */
     function file_types() {
-        $option_string = implode( get_option( 'esdc_file_types' ), ',' );
+        $option_string = get_option( 'esdc_file_types' );
         ?>
         <label for="esdc_file_types">
             <input type="text" id="esdc_file_types" name="esdc_file_types" value="<?php echo $option_string; ?>"> The types you want to track: eg. pdf,mp3,wma
@@ -291,8 +297,8 @@ class ESDC_Options {
     function count() {
         check_ajax_referer( 'esdc_count', 'cnonce' );
         $_db = new ESDC_Data;
-        $derp = $_db->add_to_count( $_REQUEST[ 'filename' ] );
-        echo json_encode( array( 'id' => $derp ) );
+        $id = $_db->add_to_count( $_REQUEST[ 'filename' ] );
+        echo json_encode( array( 'id' => $id ) );
         die();
     }
 
@@ -610,7 +616,8 @@ class ESDC {
     function load_scripts() {
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'jquery-ui-datepicker', false, array( 'jquery' ) );
-        wp_register_script( 'esdc-js', $this->pdir . '/js/esdc-ck.js', 'jquery-ui-datepicker' );
+        wp_register_script( 'esdc-js', $this->pdir . '/js/esdc.js', 'jquery-ui-datepicker' );
+        // wp_register_script( 'esdc-js', $this->pdir . '/js/esdc-ck.js', 'jquery-ui-datepicker' );
         wp_enqueue_script( 'esdc-js' );
         wp_register_style( 'esdc-css', $this->pdir . '/css/esdc-dp.css' );
         wp_enqueue_style( 'esdc-css' );
@@ -625,7 +632,7 @@ class ESDC {
             'ajax_url' => admin_url('admin-ajax.php'),
             'count_nonce' => $this->count_nonce,
             'ds_nonce' => $this->datesearch_nonce,
-            'tracked' => json_encode( get_option( 'esdc_file_types' ) )
+            'tracked' => json_encode( explode( ',', get_option( 'esdc_file_types' ) ) )
         );
         wp_localize_script( 'esdc-js', 'ESDC_JS', $data );
     }

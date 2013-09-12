@@ -1,9 +1,9 @@
 === Plugin Name ===
-Contributors: irvingswiftj, Matthew Burrows, Electric Studio, caekcraft
+Contributors: irvingswiftj, Matthew Burrows, Electric Studio, javorszky
 Tags: downloads, counter
 Requires at least: 3.1
-Tested up to: 3.5
-Stable tag: 2.0.2
+Tested up to: 3.6
+Stable tag: 2.1
 License: GPLv2 or later
 
 Get Statistics about your downloads.
@@ -35,6 +35,14 @@ Else, to install manually:
 2. Specify which file types you want to track.
 
 == Changelog ==
+
+= 2.1 =
+* Bumping version number.
+* Fixing bug with image tracking.
+* Fixing bug with not tracking if not logged in.
+* Shout out to Svetlin Nakov for sending me fixes! Thanks, dude!
+* Removed mentions of "derp" from the code. Although it is now a word according to the Oxford English Dictionary. Fact.
+* Removed minified javascript file, because I want y'all to know how this thing works. And the file is tiny.
 
 = 2.0.2 =
 * Majox bugfix. Plugin now correctly counts downloads in WordPress versions 3.3 and up. Did not test below 3.3, use at your own risk.
