@@ -3,7 +3,7 @@
 Plugin Name: Electric Studio Download Counter
 Plugin URI: http://www.electricstudio.co.uk
 Description: Get Statistics on your Downloads
-Version: 2.0.2
+Version: 2.1
 Author: Gabor Javorszky
 License: GPL2
 */
