@@ -7,7 +7,7 @@ jQuery( document ).ready( function( $ ) {
         srch = sfield.find( '#esdc-search' ),
         tracked = $.parseJSON( ESDC_JS.tracked ),
         selector = '';
-console.log(tracked);
+
     ts();
     function ts() {
         var _ts = [];
