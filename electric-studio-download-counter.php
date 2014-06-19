@@ -3,7 +3,7 @@
 Plugin Name: Electric Studio Download Counter
 Plugin URI: http://www.electricstudio.co.uk
 Description: Get Statistics on your Downloads
-Version: 2.2
+Version: 2.3
 Author: Gabor Javorszky, Jon Walter
 License: GPL2
 */
@@ -142,9 +142,9 @@ class ESDC_Options {
         foreach( $option as $i => $op ) {
             $option[ $i ] = trim( $op );
         }
-        $derp = implode( ',', $option );
-
-        return $derp;
+        return $option;
+        // $derp = implode( ',', $option );
+        // return $derp;
     }
 
     /**
@@ -158,7 +158,7 @@ class ESDC_Options {
      * @return html the html on the option page
      */
     function file_types() {
-        $option_string = get_option( 'esdc_file_types' );
+        $option_string = join(',',get_option( 'esdc_file_types' ));
         ?>
         <label for="esdc_file_types">
             <input type="text" id="esdc_file_types" name="esdc_file_types" value="<?php echo $option_string; ?>"> The types you want to track: eg. pdf,mp3,wma
@@ -627,13 +627,18 @@ class ESDC {
         $this->count_nonce = wp_create_nonce( 'esdc_count' );
         $this->datesearch_nonce = wp_create_nonce( 'esdc_datesearch' );
 
+
+
+        $options = get_option( 'esdc_file_types' );
+
         // And while we're at it, let's make some variables accessible to javascript. Because we can.
         $data = array(
             'ajax_url' => admin_url('admin-ajax.php'),
             'count_nonce' => $this->count_nonce,
             'ds_nonce' => $this->datesearch_nonce,
-            'tracked' => json_encode( explode( ',', get_option( 'esdc_file_types' ) ) )
+            'tracked' => json_encode( $options )
         );
+
         wp_localize_script( 'esdc-js', 'ESDC_JS', $data );
     }
 }
