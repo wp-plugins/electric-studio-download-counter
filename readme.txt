@@ -2,8 +2,8 @@
 Contributors: irvingswiftj, Matthew Burrows, Electric Studio, javorszky
 Tags: downloads, counter
 Requires at least: 3.1
-Tested up to: 3.8.1
-Stable tag: 2.2
+Tested up to: 3.9.1
+Stable tag: 2.3.1
 License: GPLv2 or later
 
 Get Statistics about your downloads.
@@ -35,6 +35,9 @@ Else, to install manually:
 2. Specify which file types you want to track.
 
 == Changelog ==
+
+= 2.3 =
+* Moved code around to cater for how the options table stores options
 
 = 2.2 =
 * Removed console.log from js file that was causing errors
