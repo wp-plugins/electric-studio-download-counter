@@ -3,7 +3,7 @@ Contributors: irvingswiftj, Matthew Burrows, Electric Studio, javorszky
 Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 3.9.1
-Stable tag: 2.3
+Stable tag: 2.3.1
 License: GPLv2 or later
 
 Get Statistics about your downloads.

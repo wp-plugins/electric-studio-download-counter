@@ -3,7 +3,7 @@
 Plugin Name: Electric Studio Download Counter
 Plugin URI: http://www.electricstudio.co.uk
 Description: Get Statistics on your Downloads
-Version: 2.3
+Version: 2.3.1
 Author: Gabor Javorszky, Jon Walter
 License: GPL2
 */
@@ -170,7 +170,10 @@ class ESDC_Options {
      * @return html the html on the option page
      */
     function file_types() {
-        $option_string = join(',',get_option( 'esdc_file_types' ));
+        $option = get_option( 'esdc_file_types' );
+        if(is_array($option)) {
+            $option = join(',',$option);
+        }
         ?>
         <label for="esdc_file_types">
             <input type="text" id="esdc_file_types" name="esdc_file_types" value="<?php echo $option_string; ?>"> The types you want to track: eg. pdf,mp3,wma
