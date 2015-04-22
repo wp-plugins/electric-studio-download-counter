@@ -1,4 +1,5 @@
 jQuery( document ).ready( function( $ ) {
+
     var _f = $( '#esdc_time_from' ),
         _t = $( '#esdc_time_to' ),
         tabs = $( '.nav-tab'),
@@ -16,6 +17,7 @@ jQuery( document ).ready( function( $ ) {
         }
         selector = _ts.join(',');
     }
+
     $(selector).click( function( e ) {
         e.preventDefault();
         var pn_splode = $(this)[0].pathname.split( '/' );
@@ -25,7 +27,10 @@ jQuery( document ).ready( function( $ ) {
             filename: fn,
             cnonce: ESDC_JS.count_nonce
         };
+
         ajax( payload, this );
+        return false;
+
     });
     _f.datepicker({
         dateFormat: 'yy-mm-dd',
