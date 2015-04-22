@@ -3,8 +3,8 @@
 Plugin Name: Electric Studio Download Counter
 Plugin URI: http://www.electricstudio.co.uk
 Description: Get Statistics on your Downloads
-Version: 2.3.1
-Author: Gabor Javorszky, Jon Walter
+Version: 2.4
+Author: Gabor Javorszky, Jon Walter, Leeroy Rose
 License: GPL2
 */
 // ini_set( 'display_errors', 1 );
@@ -86,6 +86,8 @@ class ESDC_Setup {
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         dbDelta( $sql );
         add_option("esdc_file_types", array("pdf","doc","xls","docx","xlsx","csv"), '', 'yes');
+        add_option("esdc_blocked_ips", array(""), '', 'yes');
+
     }
 
 
@@ -99,6 +101,7 @@ class ESDC_Setup {
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         dbDelta( $sq );
         delete_option('esdc_file_types');
+        delete_option('esdc_blocked_ips');
     }
 }
 /**
@@ -113,7 +116,6 @@ class ESDC_Options {
      */
     function __construct() {
         add_action('admin_menu', array(&$this,'create_options_page'));
-
         add_action('admin_init', array(&$this,'register_and_build_options'));
 
         add_action('wp_ajax_esdc_search_dates', array( $this, 'date_search' ) );
@@ -139,9 +141,14 @@ class ESDC_Options {
          * third argument is a callback that returns the sanitized values for the options
          * as per http://codex.wordpress.org/Function_Reference/register_setting
          */
-        register_setting( 'esdc_file_types', 'esdc_file_types', array( $this, 'validate_file_types' ) );
+        register_setting( 'esdc_options_group', 'esdc_file_types', array( $this, 'validate_file_types' ) );
+        register_setting( 'esdc_options_group', 'esdc_blocked_ips', array( $this, 'validate_file_types' ) );
+
         add_settings_section( 'main_section', 'Download Settings', array( $this, 'section_callback' ), __FILE__ );
+
         add_settings_field( 'esdc_file_types_field', 'File Types: ', array( $this, 'file_types' ), __FILE__, 'main_section' );
+        add_settings_field( 'esdc_blocked_ips_field', 'IP Addresses: ', array( $this, 'ip_addresses' ), __FILE__, 'main_section' );
+
     }
 
     /**
@@ -172,11 +179,27 @@ class ESDC_Options {
     function file_types() {
         $option = get_option( 'esdc_file_types' );
         if(is_array($option)) {
-            $option = join(',',$option);
+            $option = implode(',',$option);
         }
         ?>
         <label for="esdc_file_types">
-            <input type="text" id="esdc_file_types" name="esdc_file_types" value="<?php echo $option_string; ?>"> The types you want to track: eg. pdf,mp3,wma
+            <input type="text" id="esdc_file_types" name="esdc_file_types" value="<?php echo $option; ?>"> The types you want to track: eg. pdf,mp3,wma
+        </label>
+        <?php
+    }
+
+    /**
+     * The function that outputs the HTML required for the options page / field that checks for blocked IP addresses
+     * @return html the html on the option page
+     */
+    function ip_addresses() {
+        $option = get_option( 'esdc_blocked_ips' );
+        if(is_array($option)) {
+            $option = implode(',',$option);
+        }
+        ?>
+        <label for="esdc_blocked_ips">
+            <input type="text" id="esdc_blocked_ips" name="esdc_blocked_ips" value="<?php echo $option; ?>"> The IP's you do not want to include in the count: eg. 001.02.03.4, 005.06.07.8
         </label>
         <?php
     }
@@ -214,12 +237,14 @@ class ESDC_Options {
                     $this->populate_stats( $lastweek, current_time('mysql'));
                     ?>
                 </section>
+
                 <section class="esdc-topten esdc-container">
                     <h1>Top 10 most downloaded files</h1>
                     <?php
                     $this->populate_stats( '', '', '', 10 );
                     ?>
                 </section>
+
                 <section class="esdc-search esdc-container">
                     <h1>Search interval</h1>
                     <div id="searchfield" class="curtime">
@@ -236,6 +261,7 @@ class ESDC_Options {
                         <p>Results will appear here once you click the Search button and wait a bit.</p>
                     </div>
                 </section>
+
                 <section class="esdc-options esdc-container">
                     <h1>Plugin Options</h1>
                     <?php $this->options(); ?>
@@ -255,13 +281,10 @@ class ESDC_Options {
         ?>
         <form method="post" action="options.php">
             <?php
-            settings_fields( 'esdc_file_types' );
-            do_settings_sections( __FILE__ );
+                do_settings_sections( __FILE__ );
+                settings_fields( 'esdc_options_group' );
+                submit_button();
             ?>
-            <p class="submit">
-                <input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" />
-            </p>
-
         </form>
         <?php
     }
@@ -310,10 +333,17 @@ class ESDC_Options {
      * @return void nothing. Dies.
      */
     function count() {
-        check_ajax_referer( 'esdc_count', 'cnonce' );
-        $_db = new ESDC_Data;
-        $id = $_db->add_to_count( $_REQUEST[ 'filename' ] );
-        echo json_encode( array( 'id' => $id ) );
+
+        $user_ip        = $_SERVER['REMOTE_ADDR'];
+        $blocked_ips    = get_option( 'esdc_blocked_ips' );
+
+        if ( ! in_array($user_ip, $blocked_ips) ) {
+            check_ajax_referer( 'esdc_count', 'cnonce' );
+            $_db = new ESDC_Data;
+            $id = $_db->add_to_count( $_REQUEST[ 'filename' ] );
+            echo json_encode( array( 'id' => $id ) );
+        }
+
         die();
     }
 
