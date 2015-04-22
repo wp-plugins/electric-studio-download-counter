@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: irvingswiftj, Matthew Burrows, Electric Studio, javorszky
+Contributors: irvingswiftj, Matthew Burrows, Electric Studio, javorszky, Leeroy Rose
 Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 4.1.2
