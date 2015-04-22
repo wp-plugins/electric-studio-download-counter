@@ -234,7 +234,7 @@ class ESDC_Options {
                     <h1>Last month's downloads</h1>
                     <?php
                     $lastmonth = date( "Y-m-d H:i:s" ,mktime(0, 0, 0, date("m")-1, date("d"), date("Y")));
-                    $this->populate_stats( $lastweek, current_time('mysql'));
+                    $this->populate_stats( $lastmonth, current_time('mysql'));
                     ?>
                 </section>
 
