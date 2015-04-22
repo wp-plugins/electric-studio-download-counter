@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: irvingswiftj, Matthew Burrows, Electric Studio, javorszky
+Contributors: irvingswiftj, Matthew Burrows, Electric Studio, javorszky, Leeroy Rose
 Tags: downloads, counter
 Requires at least: 3.1
 Tested up to: 4.1.2
@@ -37,7 +37,7 @@ Else, to install manually:
 == Changelog ==
 = 2.4 =
 * Bumping version number.
-* Added ability to not track views based on IP address
+* Added ability to not track downloads based on IP address
 
 = 2.3 =
 * Moved code around to cater for how the options table stores options
